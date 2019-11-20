@@ -1,23 +1,28 @@
-@import "../../assets/lib/button.scss";
 @import "../../assets/lib/variable.scss";
 @import "../../assets/lib/mixin.scss";
+@import "../../assets/lib/componentFont.scss";
+@import "../../assets/lib/button.scss";
 
 .login {
   text-align: center;
   width: 80vw;
+  font-family: $regularFontFamily;
   &__inputWrapper {
     display: flex;
-    background: rgba(white, 0.5);
+    background: rgba(white, 0.15);
     padding: $spacing;
     border-radius: ($spacing * 2);
     color: $red;
     margin: $spacing 0;
+    width: 75%;
 
     input {
       text-align: center;
       border: none;
       background: none;
       color: $red;
+      font-family: $regularFontFamily;
+      width: 80%;
       &:focus {
         outline-width: 0;
       }
