@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    background: #333333;
+    padding: 10px;
+
+    > *:first-child {
+        flex: 4;
+    }
+}

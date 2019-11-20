@@ -1,0 +1,16 @@
+.search {
+    // background: #990000;
+    display: flex;    
+    > * {
+        background: none;
+        border: none;
+    }
+    &__submit {
+        color: #E4242C;        
+    }
+    &__term{
+        flex: 4;   
+        color: #aaaaaa;
+        font-style: italic;    
+    }
+}
