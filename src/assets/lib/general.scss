@@ -15,3 +15,131 @@ body {
     font-size: 25px;
   }
 }
+
+.portal {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::after {
+    content: "";
+    background: url(assets/images/theMadHall.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;    
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+
+.mainForm {
+  text-align: center;
+  width: 80vw;
+
+  &__inputWrapper {
+    display: flex;
+    background: rgba(white, 0.15);
+    padding: $spacing;
+    border-radius: ($spacing * 2);
+    color: $red;
+    margin: $spacing 0;
+    width: 75%;
+
+    input {
+      text-align: center;
+      border: none;
+      background: none;
+      color: $red;
+      font-family: $regularFontFamily;
+      width: 80%;
+      &:focus {
+        outline-width: 0;
+      }
+    }
+
+    &__submit {
+      color: white;
+    } 
+    
+    &--error {
+      background: rgba($red,0.15);
+      border: 1px solid $red;
+      color: white;
+      & input, select{
+        color: white
+      }
+    }
+  }
+
+  &__inputHalf {
+    width: 40%;
+    justify-content: center;
+    background: rgba(white, 0.6);
+    input {
+      text-align: center;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__separator {
+    color: $grayLight;
+    position: relative;
+    width: 300px;
+    height: 50px;
+    
+    line-height: 50px;
+    text-align: center;
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: 130px;
+      height: 1px;      
+      top: 24px;      
+      background-color: $grayLight;    
+      content: '';
+
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  &__forgotPassword {
+    color: white;
+    text-decoration: underline;
+    margin-top: ($spacing * 1.5);
+    display: block;
+  }
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $red;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $red;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: $red;
+  }
+}
