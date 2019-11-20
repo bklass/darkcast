@@ -1,7 +1,9 @@
+@import "../../assets/lib/variable.scss";
+
 .banner {
-    margin-top: 20px;
-    background: #111;
-    padding: 40px;
+    margin-top: ($spacing * 2);
+    background: $grayDark;
+    padding: ($spacing * 4);
     display: block;
     text-align: center;
 }

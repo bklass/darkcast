@@ -1,7 +1,9 @@
+@import "../../assets/lib/variable.scss";
+
 .header {
     display: flex;
-    background: #333333;
-    padding: 10px;
+    background: $grayLed;
+    padding: $spacing;
 
     > *:first-child {
         flex: 4;

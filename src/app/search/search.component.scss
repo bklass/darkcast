@@ -1,16 +1,17 @@
-.search {
-    // background: #990000;
+@import "../../assets/lib/variable.scss";
+
+.search {    
     display: flex;    
     > * {
         background: none;
         border: none;
     }
     &__submit {
-        color: #E4242C;        
+        color: $red;        
     }
     &__term{
         flex: 4;   
-        color: #aaaaaa;
+        color: $grayLight;
         font-style: italic;    
     }
 }
