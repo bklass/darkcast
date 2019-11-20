@@ -1,0 +1,94 @@
+.login {
+  text-align: center;
+  width: 80vw;
+  &__inputWrapper {
+    display: flex;
+    background: rgba(50,50,50,0.5);
+    padding: 10px;
+    border-radius: 20px;
+    color: #E4242C;
+    margin: 10px 0px;
+
+    input {
+      text-align: center;
+      border: none;
+      background: none;
+      color: #E4242C;
+      &:focus {
+        outline-width: 0;
+      }
+    }
+
+    &__submit {
+      color: white;
+    }    
+  }
+
+  &__inputHalf {
+    width: 50%;
+    justify-content: center;
+    input {
+      text-align: center;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__separator {
+    color: #AAA;
+    position: relative;
+    width: 300px;
+    height: 50px;
+    
+    line-height: 50px;
+    text-align: center;
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: 130px;
+      height: 1px;      
+      top: 24px;      
+      background-color: #aaa;
+    
+      content: '';
+
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  &__forgotPassword {
+    color: white;
+    text-decoration: underline;
+    margin-top: 15px;
+    display: block;
+  }
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #E4242C;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #E4242C;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #E4242C;
+  }
+}
