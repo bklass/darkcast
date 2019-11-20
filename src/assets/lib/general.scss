@@ -64,6 +64,19 @@ body {
     &__submit {
       color: white;
     } 
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $red;
+      opacity: 1; /* Firefox */
+    }
+  
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $red;
+    }
+  
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: $red;
+    }
     
     &--error {
       background: rgba($red,0.15);
@@ -72,13 +85,26 @@ body {
       & input, select{
         color: white
       }
+
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white;
+        opacity: 1; /* Firefox */
+      }
+    
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: white;
+      }
+    
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: white;
+      }
     }
   }
 
   &__inputHalf {
     width: 40%;
     justify-content: center;
-    background: rgba(white, 0.6);
+    background: rgba(white, 1);
     input {
       text-align: center;
     }
@@ -130,16 +156,5 @@ body {
     margin-bottom: 25px;
   }
 
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: $red;
-    opacity: 1; /* Firefox */
-  }
-
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $red;
-  }
-
-  ::-ms-input-placeholder { /* Microsoft Edge */
-    color: $red;
-  }
+ 
 }
