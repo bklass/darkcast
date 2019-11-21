@@ -3,14 +3,15 @@
     <h1 class="main-title"> DarkCast </h1>
 
     <div class="mainForm__wrapper">
-      <div class="mainForm__inputWrapper">
+      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': userControl.touched && userControl.invalid }">
         <i class="material-icons">people</i>
-        <input type="text" class="mainForm__input" name="user" placeholder="usuario"/>
-      </div>
+        <input type="text" class="mainForm__input" [ngModel]="user" email required #userControl="ngModel" name="user" placeholder="usuario"/>        
+      </div>      
+      
 
-      <div class="mainForm__inputWrapper">
+      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': passControl.touched && passControl.invalid }">
         <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input" name="pass" placeholder="chave de acesso"/>
+        <input type="password" class="mainForm__input" name="pass" [ngModel]="pass" required #passControl="ngModel" placeholder="chave de acesso"/>
       </div>
 
       <div class="mainForm__inputWrapper mainForm__inputHalf">

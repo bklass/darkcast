@@ -3,24 +3,24 @@
     <h1 class="main-title"> DarkCast </h1>
 
     <div class="mainForm__wrapper">
-     <div class="mainForm__inputWrapper">
+     <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': nameControl.touched && nameControl.invalid }">
         <i class="material-icons">people</i>
-        <input type="text" class="mainForm__input" name="name" name="#name" placeholder="nome completo"/>
+        <input type="text" class="mainForm__input" [ngModel]="name" required #nameControl="ngModel" placeholder="nome completo" name ="name"/>
       </div>
 
-      <div class="mainForm__inputWrapper">
+      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': userControl.touched && userControl.invalid  }">
         <i class="material-icons">email</i>
-        <input type="text" class="mainForm__input" name="user" placeholder="seuemail@dominio.com"/>
+        <input type="text" class="mainForm__input" [ngModel]="user" required email #userControl="ngModel" placeholder="seuemail@dominio.com" name="user"/>
       </div>
 
-      <div class="mainForm__inputWrapper">
+      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': passControl.touched && passControl.invalid  }">
         <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input" name="pass" placeholder="chave de acesso"/>
+        <input type="password" class="mainForm__input" name="pass" [ngModel]="pass" required #passControl="ngModel" placeholder="chave de acesso"/>
       </div>
 
-      <div class="mainForm__inputWrapper">
+      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': passRepControl.touched && passRepControl.invalid  }">
         <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input" name="pass" placeholder="Repita a chave de acesso"/>
+        <input type="password" class="mainForm__input" name="passRep" [ngModel]="passRep" required #passRepControl="ngModel"  placeholder="Repita a chave de acesso"/>
       </div>
 
       <div class="mainForm__inputWrapper mainForm__inputHalf">

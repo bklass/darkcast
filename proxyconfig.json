@@ -1,0 +1,7 @@
+{
+    "/api" : {
+        "target" : "123123;com",
+        "secure" : false,
+        "changeOrigin" : true
+    }
+}
