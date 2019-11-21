@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { LoginService } from './login.service';
+import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +29,8 @@ import { RegistrationComponent } from './registration/registration.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,    
+    HttpClientModule,  
+    ReactiveFormsModule,  
     RouterModule.forRoot([
       {
         path: 'home',
@@ -46,7 +47,7 @@ import { RegistrationComponent } from './registration/registration.component';
     ]),
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

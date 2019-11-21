@@ -9,4 +9,17 @@
     text-decoration: none;
     color: black;
   }
+
+  &.iniciar {
+    display: block;
+    color: $red;
+    position: absolute;
+    bottom: 0;    
+    padding: 15px 0;
+    background: black;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+  
 }
