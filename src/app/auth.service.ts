@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {Router} from '@angular/router';
 
 interface myData {
   obj : Object
+}
+
+interface UserPostResponse {
+  success : boolean;
 }
 
 
@@ -12,21 +16,16 @@ interface myData {
 })
 export class AuthService {
 
-  constructor(private http : HttpClient) {
-
-   }
+  constructor(private http : HttpClient, private router : Router) {
+  }
 
   getUserDetails(email, pass) {
-    console.log("Wihting get user details")
-    console.log(email)
-    console.log(pass)
-
     return this.http.post('/v2/5dd673f2320000ab43888a63', {
       email,
       pass
     }).subscribe(data => {
-      console.log(data," is what we got from the server");
+      //we have to add a validation to see if the login was successful on the BE
+      this.router.navigateByUrl("/home");      
     })
-    //post these details to API server return user info if correct
   }
 }

@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
     const pass = target.querySelector('#pass').value;
 
     this.auth.getUserDetails(email, pass);
-    
+  }
+
+  redirectUser(data) {
+    console.log(data);
   }
 }
