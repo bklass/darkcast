@@ -1,5 +1,9 @@
-<div class="story">
-  <div class="story__chapter" *ngFor="let record of story">
-     {{record.name}}, {{record.link}}, {{record.image}}
+<mat-sidenav-container class="general">
+   <app-header></app-header>
+   <app-banner></app-banner>
+   <div class="story">
+  <div class="story__chapter" *ngFor="let record of currentStory">
+     {{record.name}}
   </div>
 </div>
+</mat-sidenav-container>

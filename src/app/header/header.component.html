@@ -1,4 +1,11 @@
-<div class="header">
-   <app-search></app-search>
-   <app-menu></app-menu>
-</div>
+
+  <mat-sidenav #sidenav position="end" mode="side" [(opened)]="opened" class="menu">
+     <app-menu></app-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="header">
+   <div (click)="sidenav.toggle()" class="hamburguerMenu">
+      <i class="material-icons"> menu </i>
+   </div>
+    <app-search></app-search>
+  </mat-sidenav-content>

@@ -1,7 +1,13 @@
 {
-    "/v2" : {
-        "target" : " http://www.mocky.io/v2/5dd673f2320000ab43888a63",
+    "/v2/5dd673f2320000ab43888a63" : {
+        "target" : "http://www.mocky.io/v2/5dd673f2320000ab43888a63",
+        "secure" : false,
+        "changeOrigin" : true
+    },
+    "/v2/5dd7298c32000076a0888ee3" : {
+        "target" : "http://www.mocky.io/v2/5dd7298c32000076a0888ee3",
         "secure" : false,
         "changeOrigin" : true
     }
+    
 }

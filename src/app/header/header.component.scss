@@ -8,4 +8,9 @@
     > *:first-child {
         flex: 4;
     }
+    .hamburguerMenu {
+        i {
+            color:  $red;
+        }
+    }
 }

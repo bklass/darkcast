@@ -1,7 +1,19 @@
 @import "../../assets/lib/variable.scss";
 
-.menu {
+
     i {
         color:  $red;
     }
-}
+
+    ul {
+        li {
+            padding: 10px 20px;
+            border-top: 1px solid lighten($red, 2.5%);
+            border-bottom: 1px solid darken($red, 2.5%);
+            color: $red;
+            a {
+                color: $red;
+                text-decoration: none;
+            }
+        }
+    }
