@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoryService } from '../story.service';
 
-interface myStories {
-  obj: object
-}
 
 @Component({
   selector: 'app-story',

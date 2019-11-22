@@ -1,30 +1,37 @@
 <div class="portal">
-  <form class="form mainForm">
+  <form class="form mainForm"  (submit)="createUser($event)" [formGroup]="form">
     <h1 class="main-title"> DarkCast </h1>
 
     <div class="mainForm__wrapper">
-     <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': nameControl.touched && nameControl.invalid }">
+          <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('name').valid && form.get('name').touched}">
         <i class="material-icons">people</i>
-        <input type="text" class="mainForm__input" [ngModel]="name" required #nameControl="ngModel" placeholder="nome completo" name ="name"/>
+        <input type="text" class="mainForm__input" formControlName="name" name="name" id="name" placeholder="nome completo"/>
       </div>
+      <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('name').valid && form.get('name').touched}"> Nome é obrigatório</span>
 
-      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': userControl.touched && userControl.invalid  }">
+
+      <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('user').valid && form.get('user').touched}">
         <i class="material-icons">email</i>
-        <input type="text" class="mainForm__input" [ngModel]="user" required email #userControl="ngModel" placeholder="seuemail@dominio.com" name="user"/>
+        <input type="text" class="mainForm__input" formControlName="user" name="user" id="user" placeholder="seuemail@dominio.com"/>
       </div>
+      <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('user').valid && form.get('user').touched}"> O email não é válido</span>
 
-      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': passControl.touched && passControl.invalid  }">
-        <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input" name="pass" [ngModel]="pass" required #passControl="ngModel" placeholder="chave de acesso"/>
+       <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('pass').valid && form.get('pass').touched}">
+        <i class="material-icons">lock</i>
+        <input type="password" class="mainForm__input" formControlName="pass" name="pass" id="pass" placeholder="digite uma chave de acesso"/>
       </div>
+      <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('pass').valid && form.get('pass').touched}"> A Senha é invalida. Ela precisa ter entre 5 e 11 caracteres!</span>
 
-      <div [ngClass]="{'mainForm__inputWrapper' : true,'mainForm__inputWrapper--error': passRepControl.touched && passRepControl.invalid  }">
-        <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input" name="passRep" [ngModel]="passRep" required #passRepControl="ngModel"  placeholder="Repita a chave de acesso"/>
+
+       <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('rePass').valid && form.get('rePass').touched}">
+        <i class="material-icons">lock</i>
+        <input type="password" class="mainForm__input" formControlName="rePass" name="rePass" id="rePass" placeholder="repita a chave de acesso"/>
       </div>
+      <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('rePass').valid && form.get('rePass').touched}"> A Senha é invalida. Ela precisa ter entre 5 e 11 caracteres!</span>
 
-      <div class="mainForm__inputWrapper mainForm__inputHalf">
-        <input type="submit" value="Registrar-se" name="save" />
+ 
+      <div [ngClass]="{'mainForm__inputWrapper' : true, 'mainForm__inputHalf' : true,'mainForm__inputWrapper--disabled': !form.valid }">
+        <input type="submit" value="Registrar-se" name="save"  [disabled]="!form.valid" />
       </div>
     </div>
   </form>

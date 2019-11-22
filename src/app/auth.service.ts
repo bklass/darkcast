@@ -16,12 +16,20 @@ interface UserPostResponse {
 })
 
 export class AuthService {
-
+  loggedUser = { active : false, name: "", savedTrack: ""}
   constructor(private http : HttpClient, private router : Router) {
   }
 
+  getUserName () {
+    return this.loggedUser.name;
+  }
+
+  getSavedTrack () {
+    return this.loggedUser.savedTrack;
+  }
+
   getUserDetails(email, pass) {
-    return this.http.post('/v2/5dd673f2320000ab43888a63', {
+    return this.http.post<myData[]>('/v2/5dd673f2320000ab43888a63', {
       email,
       pass
     }).subscribe(data => {
