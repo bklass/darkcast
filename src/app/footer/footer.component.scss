@@ -1,0 +1,35 @@
+@import "../../assets/lib/variable.scss";
+.footer {
+  color: white;
+  padding: $spacing;
+  background: $red;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  margin-top: 40px;
+  
+
+  &__area {
+      display: block;
+      margin: $spacing 0;
+      
+
+      &__title {
+          font-family: $regularFontFamily;
+          margin: $spacing 0 ($spacing / 2);
+          font-size: 20px;
+          color: $black;
+          display: block;
+          width: 100%;
+          border-bottom: 1px solid $black;
+      }
+
+      &--quickInfo {
+          span {
+              display: block;
+              padding: ($spacing / 2);
+          }
+      }
+
+    
+  }
+}
