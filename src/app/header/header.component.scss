@@ -1,5 +1,8 @@
 @import "../../assets/lib/variable.scss";
 
+.logo {
+    padding: ( $spacing * 2 );
+}
 .header {
     display: flex;
     background: $grayLed;

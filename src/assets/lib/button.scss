@@ -7,7 +7,20 @@
     display: inline-block;
     width: 40%;
     text-decoration: none;
-    color: black;
+    color: $black;
+  }
+
+  &.regular {
+    font-size: 12px;
+    margin-top: ($spacing * 5);
+    display: block;
+    text-align: center;
+    padding: $spacing * 1.5;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: $regularFontFamily;
+    border-radius: $spacing;
   }
 
   &.iniciar {

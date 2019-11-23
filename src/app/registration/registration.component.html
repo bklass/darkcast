@@ -3,22 +3,22 @@
     <h1 class="main-title"> DarkCast </h1>
 
     <div class="mainForm__wrapper">
-          <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('name').valid && form.get('name').touched}">
+      <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('name').valid && form.get('name').touched}">
         <i class="material-icons">people</i>
-        <input type="text" class="mainForm__input" formControlName="name" name="name" id="name" placeholder="nome completo"/>
+        <input type="text" class="mainForm__input" [(ngModel)]="user.userName" formControlName="name" name="name" id="name" placeholder="nome completo"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('name').valid && form.get('name').touched}"> Nome é obrigatório</span>
 
 
       <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('user').valid && form.get('user').touched}">
         <i class="material-icons">email</i>
-        <input type="text" class="mainForm__input" formControlName="user" name="user" id="user" placeholder="seuemail@dominio.com"/>
+        <input type="text" class="mainForm__input" formControlName="user" [(ngModel)]="user.email" name="user" id="user" placeholder="seuemail@dominio.com"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('user').valid && form.get('user').touched}"> O email não é válido</span>
 
        <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('pass').valid && form.get('pass').touched}">
         <i class="material-icons">lock</i>
-        <input type="password" class="mainForm__input" formControlName="pass" name="pass" id="pass" placeholder="digite uma chave de acesso"/>
+        <input type="password" class="mainForm__input" formControlName="pass" [(ngModel)]="user.pass" name="pass" id="pass" placeholder="digite uma chave de acesso"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('pass').valid && form.get('pass').touched}"> A Senha é invalida. Ela precisa ter entre 5 e 11 caracteres!</span>
 
@@ -34,5 +34,7 @@
         <input type="submit" value="Registrar-se" name="save"  [disabled]="!form.valid" />
       </div>
     </div>
+
+    <a class="btn regular" routerLink="/"> Voltar </a>
   </form>
 </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StoryService } from '../story.service';
 
+interface myStories {
+  obj : object
+}
 
 @Component({
   selector: 'app-story',
@@ -9,20 +12,24 @@ import { StoryService } from '../story.service';
 })
 
 export class StoryComponent implements OnInit {
-  currentStory = [];
-
+  currentChapter = []
+  
+ 
   
   constructor(private story : StoryService) {
     
   }
 
   ngOnInit() {
-    console.log("story init")
-    this.story.getStories().subscribe(data => {
-      this.currentStory = data;
+    // this.story.getStory('tracks').subscribe(data=> {
+      // console.log(data);
+      // this.story.setStory(data);
+      // this.startChapter("audio1");
+    // })
+  }
 
-      console.log(this.currentStory)
-    });
+  startChapter(trackId) {
+    this.currentChapter = <myStories[]>this.story.getStoryChapter(trackId);    
   }
 
 }

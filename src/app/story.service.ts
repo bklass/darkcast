@@ -12,13 +12,30 @@ interface myStories {
 
 
 export class StoryService {
-  ;
-    constructor(private http : HttpClient ) {
+  story = [];
+
+  constructor(private http : HttpClient ) {
+    
   }
 
+  
   getStories() {
     return this.http.get<myStories[]>('/v2/5dd7298c32000076a0888ee3');
   }
+  
+  getStory(story) {
+    // return this.http.get<myStories[]>(story)
+    return true;
+  }
+
+  setStory (story) {
+    this.story = story;   
+  }
+
+  getStoryChapter(trackId) {
+    return <myStories[]>this.story[trackId];
+  }
+
 
   saveStory(trackId, timeInSeconds) {
     this.http.post<myStories[]>('apiThatWillSaveTheSotyTrack', {

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './auth.service';
 import { StoryService } from './story.service';
+import { LibraryService } from './library.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { AppComponent } from './app.component';
@@ -58,8 +59,9 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     MatSidenavModule,
     BrowserAnimationsModule
+    
   ],
-  providers: [AuthService, StoryService],
+  providers: [AuthService, StoryService, LibraryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
