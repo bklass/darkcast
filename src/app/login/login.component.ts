@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  
+  user = { userName : "", pass : "" }
   constructor(private auth : AuthService, private formBuilder : FormBuilder) { 
     
   }
@@ -25,11 +25,7 @@ export class LoginComponent implements OnInit {
 
   loginUser (e) {
     event.preventDefault();
-    const target = e.target;
-    const email = target.querySelector('#user').value;
-    const pass = target.querySelector('#pass').value;
-
-    this.auth.getUserDetails(email, pass);
+    this.auth.getUserDetails(this.user.userName, this.user.pass);
   }
 
   redirectUser(data) {

@@ -7,7 +7,8 @@ export class LibraryService {
    api = {
     users  :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users",
     tracks :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/tracker",
-    login  :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/login"
+    login  :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/login",
+    logout :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/me/logout"
   }
   constructor() { }
 
@@ -21,6 +22,10 @@ export class LibraryService {
 
   login() {
     return this.api.login;
+  }
+
+  logout () {
+    return this.api.logout;
   }
 
   

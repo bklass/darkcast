@@ -191,6 +191,14 @@ body {
     -webkit-box-shadow: -8px 2px 43px -4px rgba($red,1);
     -moz-box-shadow: -8px 2px 43px -4px rgba($red,1);
     box-shadow: -8px 2px 43px -4px rgba($red,1);
-    min-width: 130px;
+    width: 0;
+    transition: width 1s;
+    &.mat-drawer-opened {
+      transition: width 1s;
+      min-width: 130px;
+      width: auto;
+
+    }
+    
   }
 }

@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -41,7 +42,8 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule.forRoot([
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'registration',
@@ -49,7 +51,8 @@ import { FooterComponent } from './footer/footer.component';
       },
       {
         path: 'story',
-        component : StoryComponent
+        component : StoryComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: '',
@@ -61,7 +64,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule
     
   ],
-  providers: [AuthService, StoryService, LibraryService],
+  providers: [AuthService, StoryService, LibraryService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
