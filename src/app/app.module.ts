@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { StoryService } from './story.service';
 import { LibraryService } from './library.service';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
+
+
+export function tokenGetter() {
+  return localStorage.getItem("accessToken");
+}
 
 
 
@@ -38,6 +44,12 @@ import { AuthGuard } from './auth.guard';
   imports: [
     BrowserModule,
     HttpClientModule,  
+    JwtModule.forRoot({
+      config : {
+        tokenGetter : tokenGetter,
+        whitelistedDomains: ["http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/me/logout"]
+      }
+    }),
     ReactiveFormsModule,  
     RouterModule.forRoot([
       {
@@ -68,3 +80,4 @@ import { AuthGuard } from './auth.guard';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -54,7 +54,10 @@ export class AuthService {
     this.loggedUser.email = data.data.email;
     this.loggedUser._id = data.data._id;    
     this.loggedUser.savedTrack = data.data.tracks_saved;
-    this.loggedUser.token = data.data.tokens[0].token;    
+    this.loggedUser.token = data.data.tokens[0].token;  
+    
+    localStorage.setItem( "accessToken", this.loggedUser.token );
+    
 
     console.log(data);
     console.log(this.loggedUser);
