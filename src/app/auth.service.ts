@@ -17,7 +17,8 @@ interface UserPostResponse {
 })
 
 export class AuthService {
-  loggedUser = { active : true, name: "", _id: "", email: "", savedTrack: "", token : ""}
+  loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: "", token : ""}
+  
   constructor(private http : HttpClient, private router : Router, private library : LibraryService ) {  }
 
   getUserName () {
@@ -43,10 +44,25 @@ export class AuthService {
   getSavedTrack () {
     return this.loggedUser.savedTrack;
   }
-
+ 
+ 
   isLoggedIn () {
-    return this.loggedUser.active;
+    if (localStorage.getItem("accessToken")) {
+      if (this.loggedUser.name == "")  {
+        let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
+        this.http.get<myData[]>(this.library.me(), {headers : header} ).subscribe(data => {
+          if (data['success']) {
+            this.logIn(data);
+          }
+        })
+      }
+      return true;      
+    } 
+    return false;   
   }
+
+ 
+
 
   logIn(data) {
     this.loggedUser.active = true;
@@ -57,22 +73,17 @@ export class AuthService {
     this.loggedUser.token = data.data.tokens[0].token;  
     
     localStorage.setItem( "accessToken", this.loggedUser.token );
-    
-
-    console.log(data);
-    console.log(this.loggedUser);
   }
 
   logOut() {
-    console.log("esta no logout auth service")
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Bearer ' + this.loggedUser.token);
-    console.log(this.loggedUser.token);
-    
-    this.http.post<myData[]>(this.library.logout(), {
-      "token": this.loggedUser.token
-    }, {headers : headers }).subscribe(data => {
-      console.log(data);
+    let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
+          
+    this.http.post<myData[]>(this.library.logout(), {},{headers : header }).subscribe(data => {
+      console.log(data);      
+      if (data['success']) {
+        localStorage.removeItem("accessToken")
+        this.router.navigateByUrl("/");    
+      }
     })
   }
 

@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from "@auth0/angular-jwt";
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './auth.service';
 import { StoryService } from './story.service';
 import { LibraryService } from './library.service';
-import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from "@auth0/angular-jwt";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +27,6 @@ export function tokenGetter() {
 }
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +44,9 @@ export function tokenGetter() {
     BrowserModule,
     HttpClientModule,  
     JwtModule.forRoot({
-      config : {
-        tokenGetter : tokenGetter,
-        whitelistedDomains: ["http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/me/logout"]
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["http://ec2-34-204-42-208.compute-1.amazonaws.com:3000/api/users/me"]        
       }
     }),
     ReactiveFormsModule,  

@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LibraryService {
+   base = "http://ec2-34-204-42-208.compute-1.amazonaws.com:3000/api/";
    api = {
-    users  :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users",
-    tracks :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/tracker",
-    login  :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/login",
-    logout :  "http://ec2-54-172-67-42.compute-1.amazonaws.com:3000/api/users/me/logout"
+    users  :  this.base + "users",
+    tracks :  this.base + "tracks",
+    login  :  this.base + "users/login",
+    logout :  this.base + "users/me/logout",
+    me     :  this.base + "users/me"
   }
   constructor() { }
 
@@ -28,5 +30,7 @@ export class LibraryService {
     return this.api.logout;
   }
 
-  
+  me() {
+    return this.api.me;
+  }  
 }

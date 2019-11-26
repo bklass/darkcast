@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoryService } from '../story.service';
+import { AuthService } from "../auth.service";
 
 interface myStories {
   obj : object
@@ -16,7 +17,7 @@ export class StoryComponent implements OnInit {
   
  
   
-  constructor(private story : StoryService) {
+  constructor(private story : StoryService, private auth : AuthService) {
     
   }
 
@@ -26,6 +27,7 @@ export class StoryComponent implements OnInit {
       // this.story.setStory(data);
       // this.startChapter("audio1");
     // })
+
   }
 
   startChapter(trackId) {
