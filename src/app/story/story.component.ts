@@ -14,12 +14,9 @@ interface myStories {
 
 export class StoryComponent implements OnInit {
   currentChapter = []
-  
- 
-  
-  constructor(private story : StoryService, private auth : AuthService) {
-    
-  }
+  displayOptions = false;
+   
+  constructor(private story : StoryService, private auth : AuthService) {}
 
   ngOnInit() {
     let startingChapterId = this.auth.getSavedTrack()[length] ? this.auth.getSavedTrack() : this.story.getInitial();
@@ -28,10 +25,10 @@ export class StoryComponent implements OnInit {
 
   startChapter(trackId) {
     this.story.getChapter(trackId).subscribe(data => {
-      console.log(data);
-    })
-    console.log(trackId);
-    // this.currentChapter = <myStories[]>this.story.getStoryChapter(trackId);    
+      if (data["success"]) {
+        console.log(data);
+        this.currentChapter = data["data"];
+      }
+    })    
   }
-
 }

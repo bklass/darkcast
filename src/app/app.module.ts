@@ -19,6 +19,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 
 
@@ -39,6 +40,7 @@ import { AuthGuard } from './auth.guard';
     BrowserModule,
     HttpClientModule,      
     ReactiveFormsModule,  
+    NgxAudioPlayerModule,
     RouterModule.forRoot([
       {
         path: 'home',
