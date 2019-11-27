@@ -11,7 +11,7 @@
       <mat-toolbar class="player__mediaFooter__toolbar">
         <mat-toolbar-row>
            {{ state?.readableCurrentTime }}
-           <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
+           <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error"></mat-slider>
            {{ state?.readableDuration }}
         </mat-toolbar-row>
         <mat-toolbar-row class="media-action-bar">
