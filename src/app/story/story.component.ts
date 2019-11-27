@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { StoryService } from '../story.service';
 import { AuthService } from "../auth.service";
+import { AudioService } from '../audio.service';
 
 interface myStories {
   obj : object
+}
+
+interface myBool {
+  state: boolean
 }
 
 @Component({
@@ -17,7 +22,11 @@ export class StoryComponent implements OnInit {
   displayOptions = false;
   playStory = false;
    
-  constructor(private story : StoryService, private auth : AuthService) {}
+  constructor(private story : StoryService, private auth : AuthService, public audio : AudioService) {
+    this.audio.chapterEnded.subscribe(value => {
+      this.displayOptions = value;
+    });
+  }
 
   ngOnInit() {
     let startingChapterId = this.auth.getSavedTrack()[length] ? this.auth.getSavedTrack() : this.story.getInitial();
@@ -27,11 +36,10 @@ export class StoryComponent implements OnInit {
   startChapter(trackId) {
     this.story.getChapter(trackId).subscribe(data => {
       if (data["success"]) {
-        console.log("starting chapter")
-        console.log(data);
         this.currentChapter = data["data"];
         this.playStory = true;
+        this.displayOptions= false;
       }
     })    
-  }
+  }  
 }

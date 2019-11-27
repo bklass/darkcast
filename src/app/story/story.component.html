@@ -1,8 +1,7 @@
 <mat-sidenav-container class="general">
    <app-header></app-header>
-   <!-- <app-banner></app-banner> -->
+   <app-banner></app-banner>
    <div class="story">
-      {{currentChapter.filepath}}
      <app-player *ngIf="playStory" [filename]="currentChapter.name" [currentFile]="currentChapter.filepath"></app-player>
 
      <div class="story__options" *ngIf="displayOptions">     

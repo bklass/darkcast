@@ -1,6 +1,8 @@
 @import "../../assets/lib/variable.scss";
 .story {
-    padding: $spacing;
+    position: relative;
+    min-height: 500px;
+    margin-top: ($spacing * 2);
     &__canvas {
         background: $grayLight;
     }

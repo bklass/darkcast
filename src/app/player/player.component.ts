@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AudioService } from "../audio.service";
 import { StreamState } from "../interfaces/stream-state";
 
@@ -7,40 +7,47 @@ import { StreamState } from "../interfaces/stream-state";
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-
 export class PlayerComponent {
+  files: Array<any> = [];
   state: StreamState;
   @Input() currentFile: string;
-  @Input() background : string;
-  @Input() filename : string;
-  
-  
-  
-
+  @Input() filename: string;
+  duration = ""
+  currentTime = ""
   
 
-  constructor(public audioService: AudioService) {
-    this.audioService.getState().subscribe( state => {
-       this.state = state;       
-     })     
-     
+  constructor(private audioService: AudioService) {
+    // get media files
+    this.files = [this.currentFile];    
+    
+    // listen to stream state
+    this.audioService.getState()
+    .subscribe(state => {
+      this.state = state;
+    });
   }
 
-  ngOnInit(){
-    this.playStream(this.currentFile)
+  ngOnInit() {    
+    this.playStream(this.currentFile);    
   }
 
   playStream(url) {
-    console.log(url);
-    this.audioService.playStream(url);
+    this.audioService.playStream(url)    
+    .subscribe(events => {
+      this.currentTime = events['path'][0]['currentTime'];
+      if (events['type'] == "ended")  {
+        this.audioService.endChapter();
+      }
+    });
+    
   }
 
+  
   pause() {
     this.audioService.pause();
   }
 
   play() {
-    console.log("here we go")
     this.audioService.play();
   }
 
@@ -52,4 +59,3 @@ export class PlayerComponent {
     this.audioService.seekTo(change.value);
   }
 }
-
