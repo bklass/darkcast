@@ -1,13 +1,9 @@
 <mat-sidenav-container class="general">
    <app-header></app-header>
-   <app-banner></app-banner>
+   <!-- <app-banner></app-banner> -->
    <div class="story">
-     <div class="story__canvas" style="background: url('https://images-na.ssl-images-amazon.com/images/I/71VsU95yvOL._SX385_.jpg'); background-size: cover; background-position: center center; min-height: 200px;">
-     </div>
-      <mat-basic-audio-player [audioUrl]="currentChapter.filepath" [title]="currentChapter.name" [autoPlay]="false" muted="muted"
-        [displayTitle]="false" [displayVolumeControls]="true" ></mat-basic-audio-player>
-     
-     
+      {{currentChapter.filepath}}
+     <app-player *ngIf="playStory" [filename]="currentChapter.name" [currentFile]="currentChapter.filepath"></app-player>
 
      <div class="story__options" *ngIf="displayOptions">     
         <div class="story__options__option"> option 1 </div>

@@ -1,0 +1,28 @@
+<div class="player">
+    <mat-toolbar class="player__mainToolbar">
+      <span> {{ filename }}</span>
+    </mat-toolbar>
+    <div class="player__content" style="background: url('https://images-na.ssl-images-amazon.com/images/I/71VsU95yvOL._SX385_.jpg'); background-size: cover; background-position: center center; min-height: 200px;">
+        <div class="player__content__logo">
+          <mat-icon>music_note</mat-icon>          
+      </div>
+    </div>
+    <div class="player__mediaFooter">
+      <mat-toolbar class="player__mediaFooter__toolbar">
+        <mat-toolbar-row>
+           {{ state?.readableCurrentTime }}
+           <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
+           {{ state?.readableDuration }}
+        </mat-toolbar-row>
+        <mat-toolbar-row class="media-action-bar">
+          
+          <button mat-button (click)="play()" [disabled]="state?.error" *ngIf="!state?.playing">
+            <mat-icon mat-list-icon>play_circle_filled</mat-icon>
+          </button>
+          <button mat-button (click)="pause()" *ngIf="state?.playing">
+            <mat-icon mat-list-icon>pause</mat-icon>
+          </button>          
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+</div>

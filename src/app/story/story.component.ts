@@ -15,6 +15,7 @@ interface myStories {
 export class StoryComponent implements OnInit {
   currentChapter = []
   displayOptions = false;
+  playStory = false;
    
   constructor(private story : StoryService, private auth : AuthService) {}
 
@@ -26,8 +27,10 @@ export class StoryComponent implements OnInit {
   startChapter(trackId) {
     this.story.getChapter(trackId).subscribe(data => {
       if (data["success"]) {
+        console.log("starting chapter")
         console.log(data);
         this.currentChapter = data["data"];
+        this.playStory = true;
       }
     })    
   }

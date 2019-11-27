@@ -1,0 +1,54 @@
+@import "../../assets/lib/variable.scss";
+
+.player {
+    &__mainToolbar {
+      background: $red;
+      .spacer {
+        flex: 1 1 auto;
+      }
+      .toolbar-btn {
+        font-size: 16px;
+        margin-right: ($spacing / 2);
+        cursor: pointer;
+      }
+    }
+  
+    &__content {
+      &__logo {
+        margin: 2.5rem;
+        text-align: center;
+        font-size: 24px;
+        color: $red;
+        opacity: 0.2;
+        .mat-icon {
+          height: 160px !important;
+          width: 160px !important;
+          font-size: 160px !important;
+        }
+      }
+    }
+  
+    &__mediaFooter {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      &__toolbar {
+          background: $red;
+      }
+      .time-slider {
+        width: 100% !important;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      .media-action-bar {
+        width: 100%;
+        padding: 2.5rem;
+        justify-content: center;
+        .mat-icon {
+          height: 48px !important;
+          width: 48px !important;
+          font-size: 48px !important;
+        }
+      }
+    }
+  }

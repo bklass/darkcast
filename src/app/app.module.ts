@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { MaterialModule } from './material.module';
+import { PlayerComponent } from './player/player.component';
+
 
 
 
@@ -34,7 +37,8 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
     StoryComponent,
     HomeComponent,
     RegistrationComponent,
-    FooterComponent
+    FooterComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +67,8 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
     ]),
     FormsModule,
     MatSidenavModule,
-    BrowserAnimationsModule
-    
+    BrowserAnimationsModule,
+    MaterialModule    
   ],
   providers: [AuthService, StoryService, LibraryService, AuthGuard],
   bootstrap: [AppComponent]
