@@ -18,7 +18,7 @@ export class LibraryService {
     return this.api.users;
   }
 
-  trackes() {
+  tracks() {
     return this.api.tracks;
   }
 

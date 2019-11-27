@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -22,10 +21,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
 
 
-export function tokenGetter() {
-  return localStorage.getItem("accessToken");
-}
-
 
 @NgModule({
   declarations: [
@@ -42,13 +37,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,  
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ["http://ec2-34-204-42-208.compute-1.amazonaws.com:3000/api/users/me"]        
-      }
-    }),
+    HttpClientModule,      
     ReactiveFormsModule,  
     RouterModule.forRoot([
       {

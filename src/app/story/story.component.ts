@@ -22,16 +22,16 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.story.getStory('tracks').subscribe(data=> {
-      // console.log(data);
-      // this.story.setStory(data);
-      // this.startChapter("audio1");
-    // })
-
+    let startingChapterId = this.auth.getSavedTrack()[length] ? this.auth.getSavedTrack() : this.story.getInitial();
+    this.startChapter(startingChapterId);
   }
 
   startChapter(trackId) {
-    this.currentChapter = <myStories[]>this.story.getStoryChapter(trackId);    
+    this.story.getChapter(trackId).subscribe(data => {
+      console.log(data);
+    })
+    console.log(trackId);
+    // this.currentChapter = <myStories[]>this.story.getStoryChapter(trackId);    
   }
 
 }

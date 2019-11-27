@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LibraryService } from './library.service';
 
 
 interface myStories {
@@ -14,18 +15,20 @@ interface myStories {
 export class StoryService {
   story = [];
 
-  constructor(private http : HttpClient ) {
+  constructor(private http : HttpClient, private library : LibraryService) {
     
   }
-
+  
+  getInitial() {
+    return "5dd9948ce5f31f578a7fb4e3"
+  }
   
   getStories() {
     return this.http.get<myStories[]>('/v2/5dd7298c32000076a0888ee3');
   }
   
-  getStory(story) {
-    // return this.http.get<myStories[]>(story)
-    return true;
+  getChapter(story) {
+    return this.http.get<myStories[]>(this.library.tracks()+"/"+story, {})
   }
 
   setStory (story) {
@@ -38,10 +41,14 @@ export class StoryService {
 
 
   saveStory(trackId, timeInSeconds) {
-    this.http.post<myStories[]>('apiThatWillSaveTheSotyTrack', {
-      trackId,
-      timeInSeconds
-    });
+    let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
+          
+    this.http.post<myStories[]>(this.library.tracks(), {
+      "trackId" : trackId,
+      "timeInSeconds" : timeInSeconds
+    },{headers : header }).subscribe(data => {
+      console.log(data);            
+    })
   }
 
 
