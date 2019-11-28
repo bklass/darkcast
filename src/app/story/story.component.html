@@ -2,11 +2,11 @@
    <app-header></app-header>
    <app-banner></app-banner>
    <div class="story">
-     <app-player *ngIf="playStory" [filename]="currentChapter.name" [currentFile]="currentChapter.filepath"></app-player>
+     <app-player *ngIf="playStory" [filename]="currentChapter.name" [background]="currentChapter.background" [currentFile]="currentChapter.filepath"></app-player>
 
      <div class="story__options" *ngIf="displayOptions">     
-        <div class="story__options__option"> option 1 </div>
-        <div class="story__options__option"> option 2 </div>
+        <div class="story__options__option" *ngIf="options.track_id_child_1" (click)="startChapter(options.track_id_child_1)"> {{options.answer_child_1}} </div>
+        <div class="story__options__option" *ngIf="options.track_id_child_2" (click)="startChapter(options.track_id_child_2)"> {{options.answer_child_2}} </div>
      </div>
    </div>
    <app-footer></app-footer>

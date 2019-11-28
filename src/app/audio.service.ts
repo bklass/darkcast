@@ -31,8 +31,8 @@ export class AudioService {
       // Play audio
       this.audioObj.src = url;
       this.audioObj.load();
-      this.audioObj.play();
-  
+
+      
       const handler = (event: Event) => {
         this.updateStateEvents(event);
         observer.next(event);
@@ -78,6 +78,10 @@ export class AudioService {
 
   stop() {
     this.stop$.next();
+  }
+
+  load() {
+    this.audioObj.load();
   }
   
   isChapterEnded() {

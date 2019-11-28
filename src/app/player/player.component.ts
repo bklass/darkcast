@@ -8,18 +8,25 @@ import { StreamState } from "../interfaces/stream-state";
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent {
-  files: Array<any> = [];
   state: StreamState;
-  @Input() currentFile: string;
+  
   @Input() filename: string;
+  @Input() background: string;
   duration = ""
   currentTime = ""
+  backgroundStyle = ""
+  private _actualFile: string;
+
+  @Input() set currentFile(value: string) {
+    if (value) {
+      console.log(value)
+      this._actualFile = value;
+      this.playStream(this._actualFile);
+    }
+  }
   
 
   constructor(private audioService: AudioService) {
-    // get media files
-    this.files = [this.currentFile];    
-    
     // listen to stream state
     this.audioService.getState()
     .subscribe(state => {
@@ -28,7 +35,8 @@ export class PlayerComponent {
   }
 
   ngOnInit() {    
-    this.playStream(this.currentFile);    
+    this.playStream(this._actualFile);    
+    this.setBackground();
   }
 
   playStream(url) {
@@ -42,6 +50,9 @@ export class PlayerComponent {
     
   }
 
+  setBackground() {
+    this.backgroundStyle  = "background: url('"+this.background+"'); background-size: cover; background-position: center center; min-height: 200px;"
+  }
   
   pause() {
     this.audioService.pause();

@@ -2,7 +2,7 @@
   <mat-toolbar class="player__mainToolbar">
     <span> {{ filename }}</span>
   </mat-toolbar>
-  <div class="player__content" style="background: url('https://images-na.ssl-images-amazon.com/images/I/71VsU95yvOL._SX385_.jpg'); background-size: cover; background-position: center center; min-height: 200px;">
+  <div class="player__content" [style]="backgroundStyle">
       <div class="player__content__logo">
         <mat-icon>music_note</mat-icon>          
     </div>
