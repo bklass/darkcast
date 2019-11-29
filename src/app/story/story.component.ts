@@ -20,7 +20,7 @@ interface myBool {
 
 export class StoryComponent implements OnInit {
   currentChapter = []
-  displayOptions = false;
+  displayOptions = true;
   playStory = false;
   options = [];
    
@@ -39,14 +39,11 @@ export class StoryComponent implements OnInit {
   startChapter(trackId, isChanging = true) {
     this.story.getChapter(trackId).subscribe(data => {
       if (data["success"]) {
+        console.log(data);
         this.currentChapter = data["data"];
         this.playStory = true;
-        this.displayOptions= false;
-        this.options = this.currentChapter["options"];
-        if (isChanging) {
-          
-          
-        }        
+        this.displayOptions= true;
+        this.options = this.currentChapter["options"];             
       }
     })    
   }  

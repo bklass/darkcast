@@ -42,6 +42,8 @@ export class PlayerComponent {
   playStream(url) {
     this.audioService.playStream(url)    
     .subscribe(events => {
+      console.log("events");
+      console.log(events);
       this.currentTime = events['path'][0]['currentTime'];
       if (events['type'] == "ended")  {
         this.audioService.endChapter();

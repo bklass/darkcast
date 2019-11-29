@@ -1,3 +1,6 @@
+@import "./variable.scss";
+@import "./mixin.scss";
+
 .btn {
   &.main {
     background: white;
@@ -33,6 +36,14 @@
     width: 100%;
     text-align: center;
     font-size: 24px;
+
+    @include for-tablet-portrait-up {
+      width: 200px;
+      position: initial;
+      border-radius: ($spacing  /  2);
+      margin-left: ($spacing * 10);
+    }
+    
   }
   
 }

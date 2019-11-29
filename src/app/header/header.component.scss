@@ -1,9 +1,9 @@
 @import "../../assets/lib/variable.scss";
-
+@import "../../assets/lib/mixin.scss";
 .logo {
     padding: ( $spacing * 2 );
 }
-.header {
+.header  {
     display: flex;
     background: $grayLed;
     padding: $spacing;
@@ -19,4 +19,11 @@
             color:  $red;
         }
     }
+
+    @include for-tablet-portrait-up {
+        display: block;
+        .hamburguerMenu {
+            display: none;
+        }
+    }  
 }
