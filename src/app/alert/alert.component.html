@@ -1,0 +1,4 @@
+<div class="alert" [ngClass]="{'alert--open': open, 'alert--error' : error}">
+   <div class="alert__header"> <span>Hey!</span> <i class="material-icons" (click)="closeAlert()"> close </i>  </div>
+   <div class="alert__content"> {{message}}!</div>
+</div>

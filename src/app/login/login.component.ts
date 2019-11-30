@@ -29,6 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirectUser(data) {
-    console.log(data);
+    
   }
 }

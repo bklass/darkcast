@@ -1,0 +1,53 @@
+@import "../../assets/lib/variable.scss";
+@import "../../assets/lib/mixin.scss";
+.alert {
+    font-family: $regularFontFamily;
+    color: white;
+    padding: $spacing;
+    display: block;
+    background: $greenSuccess;
+    border-bottom-left-radius: ($spacing / 2);
+    border-bottom-right-radius: ($spacing /2);
+    height: 0px;
+    overflow: hidden;
+    visibility: collapse;
+    transition: height 1s;
+    padding: 0;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: calc(100% - #{$spacing * 2});    
+
+
+    &--open {
+        visibility: initial;
+        height: auto;
+        padding: $spacing;        
+    }
+
+    &--error {
+        background: darken($red, 15%);
+        .alert__header { border-color:darken($red, 25%); }
+    }
+
+    &__header {
+        font-family: $scarryFontFamily;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 60px;
+        padding-bottom: $spacing;
+        border-bottom: 1px solid darken($greenSuccess, 15%);
+        i {
+            font-size: 35px;
+            border: 4px dashed;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
+    &__content {
+        padding: $spacing 0;
+    }
+
+}

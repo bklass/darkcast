@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { LibraryService } from '../library.service';
+import {Router} from '@angular/router';
+
 
 interface myData {
   obj : object
@@ -17,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   user = { email : "", userName: "", pass : ""};
 
-  constructor(private formBuilder : FormBuilder, private http : HttpClient, private library : LibraryService) { 
+  constructor(private formBuilder : FormBuilder, private http : HttpClient, private library : LibraryService, private router : Router) { 
 
   }
 
@@ -39,17 +41,18 @@ export class RegistrationComponent implements OnInit {
   }
 
   createUser(event) {
-    console.log(this.user.userName);
-    console.log(this.user.email);
-    console.log(this.user.pass);
-
     this.http.post<myData[]>(this.library.users(), {
       "name" : this.user.userName,      
       "email": this.user.email,
       "password" : this.user.pass
     }).subscribe(data => {
-      console.log(data);
+      if (data["sucess"]) {
+        this.form.reset();
+        this.router.navigateByUrl("/home");    
+      }
     })
+
+    
     
   }
 

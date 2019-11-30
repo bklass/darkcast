@@ -3,10 +3,12 @@
 .logo {
     padding: ( $spacing * 2 );
 }
+
 .header  {
     display: flex;
     background: $grayLed;
     padding: $spacing;
+    align-items: center;
 
     > *:first-child {
         flex: 1;
@@ -16,9 +18,13 @@
     }
     .hamburguerMenu {
         i {
-            color:  $red;
+            color:  $red;            
+            border: 1px solid $grayLed;
+            border-radius: 50%;
+            padding: 5px;
         }
     }
+
 
     @include for-tablet-portrait-up {
         display: block;

@@ -22,6 +22,7 @@ import { AuthGuard } from './auth.guard';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { MaterialModule } from './material.module';
 import { PlayerComponent } from './player/player.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -38,7 +39,8 @@ import { PlayerComponent } from './player/player.component';
     HomeComponent,
     RegistrationComponent,
     FooterComponent,
-    PlayerComponent
+    PlayerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
