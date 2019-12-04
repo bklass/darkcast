@@ -20,7 +20,7 @@ interface myBool {
 
 export class StoryComponent implements OnInit {
   currentChapter = []
-  displayOptions = true;
+  displayOptions = false;
   playStory = false;
   options = [];
    
