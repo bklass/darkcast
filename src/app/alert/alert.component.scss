@@ -5,7 +5,7 @@
     color: white;
     padding: $spacing;
     display: block;
-    background: $greenSuccess;
+    background: rgba($greenSuccess,0.5);
     border-bottom-left-radius: ($spacing / 2);
     border-bottom-right-radius: ($spacing /2);
     height: 0px;
@@ -37,7 +37,7 @@
         align-items: center;
         font-size: 60px;
         padding-bottom: $spacing;
-        border-bottom: 1px solid darken($greenSuccess, 15%);
+        border-bottom: 1px solid darken($greenSuccess, 25%);
         i {
             font-size: 35px;
             border: 4px dashed;

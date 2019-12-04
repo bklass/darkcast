@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-
+import { AlertService } from "../service/alert.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   user = { userName : "", pass : "" }
-  constructor(private auth : AuthService, private formBuilder : FormBuilder) { 
+  constructor(private auth : AuthService, private formBuilder : FormBuilder, private alert: AlertService) { 
     
   }
 
@@ -30,5 +30,9 @@ export class LoginComponent implements OnInit {
 
   redirectUser(data) {
     
+  }
+
+  printMessage(something) {
+    this.alert.printMessage("abdudada");
   }
 }

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './auth.service';
+import { AlertService } from './service/alert.service';
 import { StoryService } from './story.service';
 import { LibraryService } from './library.service';
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -72,7 +73,7 @@ import { AlertComponent } from './alert/alert.component';
     BrowserAnimationsModule,
     MaterialModule    
   ],
-  providers: [AuthService, StoryService, LibraryService, AuthGuard],
+  providers: [AuthService, StoryService, LibraryService, AuthGuard, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

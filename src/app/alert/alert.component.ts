@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { AlertService } from "../service/alert.service";
+
 
 @Component({
   selector: 'app-alert',
@@ -6,13 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alert.component.scss']
 })
 
+@Injectable()
 export class AlertComponent implements OnInit {
-  open = false;
+  alertTitle = "Sucesso!"
+  open = true;
   error = false;
   message = "essa é a mensagem default"
-  constructor() { }
+  constructor( private alertService : AlertService) {
+    
+   }
 
   ngOnInit() {
+    this.alertService.getMessage()
+    .subscribe(message => {
+      console.log("yeaaaaah!");
+      this.message = message;
+    });
   }
 
   openAlert() {
@@ -22,7 +33,7 @@ export class AlertComponent implements OnInit {
     this.open = false;
   }
 
-  setMessage() {
-    this.message 
+  setMessage(message) {
+    this.message  = message;
   }
 }
