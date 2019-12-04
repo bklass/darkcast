@@ -32,7 +32,5 @@ export class LoginComponent implements OnInit {
     
   }
 
-  printMessage(something) {
-    this.alert.printMessage("abdudada");
-  }
+  
 }

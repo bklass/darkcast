@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { LibraryService } from '../library.service';
 import {Router} from '@angular/router';
+import { AlertService } from "../service/alert.service";
 
 
 interface myData {
@@ -19,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   user = { email : "", userName: "", pass : ""};
 
-  constructor(private formBuilder : FormBuilder, private http : HttpClient, private library : LibraryService, private router : Router) { 
+  constructor(private formBuilder : FormBuilder, private http : HttpClient, private library : LibraryService, private router : Router, private alert : AlertService) { 
 
   }
 
@@ -31,6 +32,8 @@ export class RegistrationComponent implements OnInit {
       rePass : [null, [Validators.required,Validators.maxLength(12), Validators.minLength(5)]],  
       confirm: [ null, null]
     })
+
+    this.alert.printMessage("ASADAS", true)
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -40,16 +43,18 @@ export class RegistrationComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }     
   }
 
+  printMessage() {
+    this.alert.printMessage("hahahaha", false);
+  }
+
   createUser(event) {
     this.http.post<myData[]>(this.library.users(), {
       "name" : this.user.userName,      
       "email": this.user.email,
       "password" : this.user.pass
     }).subscribe(data => {
-      if (data["sucess"]) {
-        this.form.reset();
-        this.router.navigateByUrl("/home");    
-      }
+      console.log(data["message"]);
+      this.alert.printMessage(data["message"], data["success"]);      
     })
 
     

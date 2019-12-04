@@ -11,7 +11,7 @@ import { AlertService } from "../service/alert.service";
 @Injectable()
 export class AlertComponent implements OnInit {
   alertTitle = "Sucesso!"
-  open = true;
+  open = false;
   error = false;
   message = "essa é a mensagem default"
   constructor( private alertService : AlertService) {
@@ -19,10 +19,24 @@ export class AlertComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.alertService.getMessage()
-    .subscribe(message => {
-      console.log("yeaaaaah!");
-      this.message = message;
+    this.alertService.msg.subscribe(value => {
+      this.setMessage(value);
+    });
+
+    this.alertService.open.subscribe(value => {
+      if (value){
+        this.openAlert();
+      } else {
+        this.closeAlert();
+      }
+    });
+
+    this.alertService.error.subscribe(value => {
+      this.setState(value)
+    });
+
+    this.alertService.title.subscribe(value => {
+      this.alertTitle =value
     });
   }
 
@@ -35,5 +49,9 @@ export class AlertComponent implements OnInit {
 
   setMessage(message) {
     this.message  = message;
+  }
+
+  setState(val) {
+    this.error = val;
   }
 }

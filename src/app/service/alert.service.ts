@@ -6,16 +6,28 @@ import { Observable, Observer, BehaviorSubject, Subject } from "rxjs";
 })
 
 export class AlertService {
-  msg = ""
-  private msgChange: BehaviorSubject<String> = new BehaviorSubject(this.msg);
+  msg = new Subject<string>();
+  title = new Subject<string>();
+  open = new Subject<boolean>();
+  error = new Subject<boolean>();
+  
   constructor() { }
 
-  printMessage(msg) {
-    console.log(msg);
-    this.msgChange = msg;
+  printMessage(msg, success) {
+    this.msg.next(msg);
+    this.error.next(!success);
+    this.openAlert();
+    if(!success) {
+      this.setTitle("... ooops! Erro")
+    }
   }
 
-  getMessage(): Observable<any> {
-    return this.msgChange.asObservable();
+  openAlert() {
+    this.open.next(true);    
   }
+
+  setTitle(title) {
+    this.title.next(title)
+  }
+
 }
