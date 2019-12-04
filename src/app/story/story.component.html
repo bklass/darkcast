@@ -8,6 +8,8 @@
         <div class="story__options__option" *ngIf="options.track_id_child_1" (click)="startChapter(options.track_id_child_1)"> {{options.answer_child_1}} </div>
         <div class="story__options__option" *ngIf="options.track_id_child_2" (click)="startChapter(options.track_id_child_2)"> {{options.answer_child_2}} </div>
      </div>
+
+     <button (click)="facebookSharing(shareObj)">Facebook Share</button>
    </div>
    <app-footer></app-footer>
 </mat-sidenav-container>
