@@ -42,7 +42,7 @@ export class StoryComponent implements OnInit {
         console.log(data);
         this.currentChapter = data["data"];
         this.playStory = true;
-        this.displayOptions= true;
+        this.displayOptions= false;
         this.options = this.currentChapter["options"];             
       }
     })    
