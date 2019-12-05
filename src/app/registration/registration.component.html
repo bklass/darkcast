@@ -29,6 +29,7 @@
         <input type="password" class="mainForm__input" formControlName="rePass" name="rePass" id="rePass" placeholder="repita a chave de acesso"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('rePass').valid && form.get('rePass').touched}"> A Senha é invalida. Ela precisa ter entre 5 e 11 caracteres!</span>
+      <span class="errorMsg errorMsg--show"  *ngIf="form.get('rePass').touched && form.hasError('mismatch')"> Password and Confirm password must match.</span>
 
  
       <div [ngClass]="{'mainForm__inputWrapper' : true, 'mainForm__inputHalf' : true,'mainForm__inputWrapper--disabled': !form.valid }">

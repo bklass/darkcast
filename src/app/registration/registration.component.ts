@@ -31,9 +31,15 @@ export class RegistrationComponent implements OnInit {
       pass : [null, [Validators.required,Validators.maxLength(12), Validators.minLength(5)]],
       rePass : [null, [Validators.required,Validators.maxLength(12), Validators.minLength(5)]],  
       confirm: [ null, null]
-    })
+    }, {validator: this.passwordMatchValidator})
 
-    this.alert.printMessage("ASADAS", true)
+    
+  }
+
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('pass').value === g.get('rePass').value
+      ? null
+      : { mismatch: true };
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
