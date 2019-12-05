@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LibraryService } from './library.service';
+import { AlertService } from './service/alert.service';
 import {Router} from '@angular/router';
 
 interface myData {
@@ -19,7 +20,7 @@ interface UserPostResponse {
 export class AuthService {
   loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: "", token : ""}
   
-  constructor(private http : HttpClient, private router : Router, private library : LibraryService ) {  }
+  constructor(private http : HttpClient, private router : Router, private library : LibraryService, private alert : AlertService) {  }
 
   getUserName () {
     return this.loggedUser.name;
@@ -98,7 +99,8 @@ export class AuthService {
         this.logIn(data);
         this.router.navigateByUrl("/home");      
       } else {
-        // error modal maybe??
+        console.log("falhou!")
+        this.alert.printMessage("Usuário ou senha incorretos", false);        
       }
     })
   }
