@@ -34,7 +34,7 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.auth.activeUser.subscribe(value => {
+    this.auth.activeUser.subscribe(value => {    
       if (value) {
         let savedTracks = this.auth.getSavedTrack();
         let startingChapterId = savedTracks.length ? savedTracks["track_id"] : this.story.getInitial();

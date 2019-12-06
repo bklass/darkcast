@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LibraryService } from './library.service';
 import { AlertService } from './service/alert.service';
 import {Router} from '@angular/router';
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 
 interface myData {
   obj : object
@@ -20,7 +20,7 @@ interface UserPostResponse {
 
 export class AuthService {
   loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: "", token : ""}
-  activeUser = new Subject<boolean>();
+  activeUser = new BehaviorSubject<boolean>(false);
   
   constructor(private http : HttpClient, private router : Router, private library : LibraryService, private alert : AlertService) {  }
 
