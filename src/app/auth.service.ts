@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LibraryService } from './library.service';
 import { AlertService } from './service/alert.service';
 import {Router} from '@angular/router';
+import { Subject } from "rxjs";
 
 interface myData {
   obj : object
@@ -19,6 +20,7 @@ interface UserPostResponse {
 
 export class AuthService {
   loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: "", token : ""}
+  activeUser = new Subject<boolean>();
   
   constructor(private http : HttpClient, private router : Router, private library : LibraryService, private alert : AlertService) {  }
 
@@ -34,8 +36,8 @@ export class AuthService {
     return this.loggedUser._id;
   }
 
-  getUserTrack() {
-    return this.loggedUser.savedTrack;
+  getUserTrack(n = 0 ) {
+    return this.loggedUser.savedTrack[ n != 0 ? n : this.loggedUser.savedTrack[this.loggedUser.savedTrack.length-1]];
   }
 
   getUserTokens() {
@@ -43,7 +45,18 @@ export class AuthService {
   }
 
   getSavedTrack () {
-    return this.loggedUser.savedTrack;
+    if (this.loggedUser.savedTrack.length) {
+      return this.loggedUser.savedTrack[this.loggedUser.savedTrack.length-1];
+    } else {
+      return this.loggedUser.savedTrack;
+    }
+  }
+  activateUser() {
+    this.activeUser.next(true);
+  }
+
+  deactivateUser(){
+    this.activeUser.next(false);
   }
  
  
@@ -74,13 +87,13 @@ export class AuthService {
     this.loggedUser.token = data.data.tokens[0].token;  
     
     localStorage.setItem( "accessToken", this.loggedUser.token );
+    this.activateUser();
   }
 
   logOut() {
     let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
           
     this.http.post<myData[]>(this.library.logout(), {},{headers : header }).subscribe(data => {
-      console.log(data);      
       if (data['success']) {
         localStorage.removeItem("accessToken")
         this.router.navigateByUrl("/");    

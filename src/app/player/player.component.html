@@ -2,7 +2,7 @@
   <mat-toolbar class="player__mainToolbar">
     <span> {{ filename }}</span>
   </mat-toolbar>
-  <div class="player__content" [style]="backgroundStyle">
+  <div class="player__content" [ngStyle]="getBackground()">
       <div class="player__content__logo">
         <mat-icon>music_note</mat-icon>          
     </div>

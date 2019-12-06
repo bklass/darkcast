@@ -14,7 +14,6 @@ export class MenuComponent implements OnInit {
   }
 
   logOut() {
-    console.log("esta no logout menu")
     this.user.logOut();
   }
 

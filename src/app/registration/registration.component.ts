@@ -59,7 +59,6 @@ export class RegistrationComponent implements OnInit {
       "email": this.user.email,
       "password" : this.user.pass
     }).subscribe(data => {
-      console.log(data["message"]);
       this.alert.printMessage(data["message"], data["success"]);      
     })
 

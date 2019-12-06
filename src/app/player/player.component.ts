@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AudioService } from "../audio.service";
+import { StoryService } from "../story.service";
 import { StreamState } from "../interfaces/stream-state";
 
 @Component({
@@ -12,6 +13,7 @@ export class PlayerComponent {
   
   @Input() filename: string;
   @Input() background: string;
+  @Input() initialTime: string;
   duration = ""
   currentTime = ""
   backgroundStyle = ""
@@ -19,41 +21,48 @@ export class PlayerComponent {
 
   @Input() set currentFile(value: string) {
     if (value) {
-      console.log(value)
       this._actualFile = value;
       this.playStream(this._actualFile);
     }
   }
   
 
-  constructor(private audioService: AudioService) {
+  constructor(private audioService: AudioService, private story: StoryService) {
     // listen to stream state
     this.audioService.getState()
     .subscribe(state => {
       this.state = state;
     });
+
+    
   }
 
   ngOnInit() {    
-    this.playStream(this._actualFile);    
-    this.setBackground();
+    this.playStream(this._actualFile);      
+    this.audioService.seekTo(this.initialTime);
   }
 
   playStream(url) {
     this.audioService.playStream(url)    
     .subscribe(events => {
-      console.log("events");
-      console.log(events);
       this.currentTime = events['path'][0]['currentTime'];
       if (events['type'] == "ended")  {
         this.audioService.endChapter();
       }
-    });
-    
+      if (events['type'] == "pause")  {
+        this.story.savePosition(this.currentTime);       
+      }
+    });    
   }
 
-  setBackground() {
-    this.backgroundStyle  = "background: url('"+this.background+"'); background-size: cover; background-position: center center; min-height: 200px;"
+  
+  getBackground(){
+    return {
+      backgroundImage : 'url('+this.background+')',
+      backgroundSize: "cover",
+      backgroundPosition : "center",
+      minHeight : "200px"
+    }
   }
   
   pause() {
