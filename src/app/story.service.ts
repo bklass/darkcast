@@ -43,7 +43,7 @@ export class StoryService {
   saveChapter(userId, trackId, timeInSeconds) {
     let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
           
-    this.http.post<myStories[]>(this.library.users()+"/"+userId, {
+    this.http.put<myStories[]>(this.library.users()+"/"+userId, {
       "trackId" : trackId,
       "timeInSeconds" : timeInSeconds
     },{headers : header }).subscribe(data => {
