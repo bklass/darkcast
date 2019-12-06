@@ -44,8 +44,8 @@ export class StoryService {
     let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
           
     this.http.put<myStories[]>(this.library.users()+"/"+userId, {
-      "trackId" : trackId,
-      "timeInSeconds" : timeInSeconds
+      "track_id" : trackId,
+      "time_in_seconds" : timeInSeconds
     },{headers : header }).subscribe(data => {
       console.log(data);            
     })
