@@ -46,7 +46,7 @@ export class StoryService {
           console.log(timeInSeconds)
     this.http.put<myStories[]>(this.library.users()+"/"+userId, {
       "track_id" : trackId,
-      "time_in_seconds" : timeInSeconds
+      "time_in_seconds" : timeInSeconds == 0 ? 1 : timeInSeconds
     },{headers : header }).subscribe(data => {
       console.log(data);            
     })
