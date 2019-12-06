@@ -42,7 +42,8 @@ export class StoryService {
 
   saveChapter(userId, trackId, timeInSeconds) {
     let header = new HttpHeaders({'content-type' : 'application/json', 'authorization' : 'Bearer ' + localStorage.getItem("accessToken"),  'Accept': '*' });
-          
+          console.log("time in seconds");
+          console.log(timeInSeconds)
     this.http.put<myStories[]>(this.library.users()+"/"+userId, {
       "track_id" : trackId,
       "time_in_seconds" : timeInSeconds
