@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LibraryService {
-   base = "http://ec2-34-204-42-208.compute-1.amazonaws.com:3000/api/";
+   base = "http://ec2-18-215-169-47.compute-1.amazonaws.com:3000/api/";  
    api = {
     users  :  this.base + "users",
     tracks :  this.base + "tracks",

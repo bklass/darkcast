@@ -94,12 +94,10 @@ export class AuthService {
       "password":pass
     }).subscribe(data => {
       //check if the login was sucessfull
-      console.log(data)
       if (data['success']) {
         this.logIn(data);
         this.router.navigateByUrl("/home");      
       } else {
-        console.log("falhou!")
         this.alert.printMessage("Usuário ou senha incorretos", false);        
       }
     })
