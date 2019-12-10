@@ -46,7 +46,7 @@ export class AuthService {
 
   getSavedTrack () {
     if (this.loggedUser.savedTrack.length) {
-      return this.loggedUser.savedTrack[this.loggedUser.savedTrack.length-1];
+      return this.loggedUser.savedTrack[0];
     } else {
       return this.loggedUser.savedTrack;
     }
