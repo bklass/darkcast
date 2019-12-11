@@ -40,7 +40,7 @@ export class StoryService {
     return <myStories[]>this.story[trackId];
   }
   savePosition(timeInSeconds) {
-    if(this.auth.getSavedTrack().length){
+    if(this.auth.getSavedTrack()["time_in_seconds"].length){
       if (timeInSeconds != this.auth.getSavedTrack()["time_in_seconds"]) {
         this.saveChapter(this.auth.getUserId(), this.auth.getSavedTrack()["track_id"], timeInSeconds);
       }

@@ -45,11 +45,8 @@ export class AuthService {
   }
 
   getSavedTrack () {
-    if (this.loggedUser.savedTrack.length) {
-      return this.loggedUser.savedTrack[0];
-    } else {
-      return this.loggedUser.savedTrack;
-    }
+    return this.loggedUser.savedTrack;
+    
   }
   activateUser() {
     this.activeUser.next(true);
