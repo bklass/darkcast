@@ -6,14 +6,14 @@
     <div class="mainForm__wrapper">
       <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('user').valid && form.get('user').touched}">
         <i class="material-icons">people</i>
-        <input type="text" class="mainForm__input" formControlName="user" [(ngModel)]="user.userName" name="user" id="user" placeholder="email"/>
+        <input type="text" class="mainForm__input" autocomplete="off" formControlName="user" [(ngModel)]="user.userName" name="user" id="user" placeholder="email"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('user').valid && form.get('user').touched}"> O email não é válido</span>      
       
 
       <div class="mainForm__inputWrapper" [ngClass]="{'mainForm__inputWrapper--error': !form.get('pass').valid && form.get('pass').touched}">
         <i class="material-icons">lock </i>
-        <input type="password" class="mainForm__input"  [(ngModel)]="user.pass" formControlName="pass" id="pass" placeholder="chave de acesso"/>
+        <input type="password" class="mainForm__input"  autocomplete="off" [(ngModel)]="user.pass" formControlName="pass" id="pass" placeholder="chave de acesso"/>
       </div>
       <span class="errorMsg" [ngClass]="{'errorMsg--show': !form.get('pass').valid && form.get('pass').touched}"> A senha precisa ser preenchida</span>
 

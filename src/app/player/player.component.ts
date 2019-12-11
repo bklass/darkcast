@@ -50,6 +50,7 @@ export class PlayerComponent {
         this.audioService.endChapter();
       }
       if (events['type'] == "pause")  {
+        console.log("This pause")
         this.story.savePosition(this.currentTime);       
       }
     });    
