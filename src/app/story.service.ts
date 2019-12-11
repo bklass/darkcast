@@ -15,6 +15,7 @@ interface myStories {
 
 export class StoryService {
   story = [];
+  currentChapterId = "";
 
   constructor(private http : HttpClient, private library : LibraryService, private auth :  AuthService) {
     
@@ -40,9 +41,9 @@ export class StoryService {
     return <myStories[]>this.story[trackId];
   }
   savePosition(timeInSeconds) {
-    if(this.auth.getSavedTrack() != ""){
+    if(this.currentChapterId != ""){
       if (timeInSeconds != this.auth.getSavedTrack()["time_in_seconds"]) {
-        this.saveChapter(this.auth.getUserId(), this.auth.getSavedTrack()["track_id"], timeInSeconds);
+        this.saveChapter(this.auth.getUserId(), this.currentChapterId, timeInSeconds);
       }
     } else {
       this.saveChapter(this.auth.getUserId(), this.getInitial(), timeInSeconds);
@@ -58,7 +59,7 @@ export class StoryService {
     },{headers : header }).subscribe(data => {
       
     })
-    this.auth.setSavedTrack(trackId);
+    this.currentChapterId = trackId;
   }
 
 
