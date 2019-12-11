@@ -40,15 +40,11 @@ export class StoryService {
     return <myStories[]>this.story[trackId];
   }
   savePosition(timeInSeconds) {
-    console.log("save Position");
-    console.log(this.auth.getSavedTrack())
     if(this.auth.getSavedTrack() != ""){
-      console.log("caiu no if")
       if (timeInSeconds != this.auth.getSavedTrack()["time_in_seconds"]) {
         this.saveChapter(this.auth.getUserId(), this.auth.getSavedTrack()["track_id"], timeInSeconds);
       }
     } else {
-      console.log("ta caindo no else");
       this.saveChapter(this.auth.getUserId(), this.getInitial(), timeInSeconds);
     }
     
