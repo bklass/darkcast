@@ -19,7 +19,7 @@ interface UserPostResponse {
 })
 
 export class AuthService {
-  loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: {}, token : ""}
+  loggedUser = { active : false, name: "", _id: "", email: "", savedTrack: {track_id : ""}, token : ""}
   activeUser = new BehaviorSubject<boolean>(false);
   
   constructor(private http : HttpClient, private router : Router, private library : LibraryService, private alert : AlertService) {  }
@@ -34,10 +34,6 @@ export class AuthService {
 
   getUserId() {
     return this.loggedUser._id;
-  }
-
-  getUserTrack(n = 0 ) {
-    return this.loggedUser.savedTrack[ n != 0 ? n : this.loggedUser.savedTrack[this.loggedUser.savedTrack.length-1]];
   }
 
   getUserTokens() {
