@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   getSavedTrack () {
-    return this.loggedUser.savedTrack;
+    return this.loggedUser.savedTrack[0];
     
   }
   activateUser() {
